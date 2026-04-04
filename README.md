@@ -15,3 +15,14 @@ FlaskとSQLiteを使って作成した、シンプルな在庫管理アプリで
 - Bootstrap
 
 ## 補足SQLiteのデータベースは起動時に自動生成されます。
+
+## 画面イメージ
+
+### 在庫入力
+![在庫入力画面](screenshots/input.png)
+
+### 登録後
+![保存完了](screenshots/saved.png)
+
+### リスト
+![リスト画面](screenshots/list.png)
