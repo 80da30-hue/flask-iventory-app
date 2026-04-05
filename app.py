@@ -78,7 +78,11 @@ def dashboard():
     cur = conn.cursor()
 
     # 全データ
-    cur.execute("SELECT item, action, quantity, expiry, date FROM inventory_log")
+    cur.execute("""
+        SELECT item, action, quantity, expiry, date 
+        FROM inventory_log
+        ORDER BY date DESC
+    """)
     rows = cur.fetchall()
 
     # 時間調整
@@ -107,6 +111,7 @@ def dashboard():
     cur.execute("""
         SELECT item,
         SUM(CASE WHEN action = '仕入れ' THEN quantity ELSE 0 END) -
+        SUM(CASE WHEN action = '使用' THEN quantity ELSE 0 END) -
         SUM(CASE WHEN action = '廃棄' THEN quantity ELSE 0 END)
         FROM inventory_log
         GROUP BY item
